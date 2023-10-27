@@ -1,0 +1,34 @@
+name: Docker Image CI
+
+on:
+  push:
+    paths:
+      - 'airports/**'
+      - 'airports-1/**'
+      - 'countries/**'
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the Docker image and Push
+      env:
+          USER: ${{ secrets.DOCKER_USER }}
+          PASS: ${{ secrets.DOCKER_PASS }}
+      run: |
+        # first build the images
+        cd airports
+        docker build . --file Dockerfile --platform linux/amd64 --tag rawme/foodics-interview:airports
+        cd ../airports-1
+        docker build . --file Dockerfile --platform linux/amd64 --tag rawme/foodics-interview:airports1
+        cd ../countries
+        docker build . --file Dockerfile --platform linux/amd64 --tag rawme/foodics-interview:countries
+        # now push
+        docker login -u $USER -p $PASS
+        docker push rawme/foodics-interview:airports
+        docker push rawme/foodics-interview:airports1
+        docker push rawme/foodics-interview:countries
