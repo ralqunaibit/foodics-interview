@@ -9,7 +9,7 @@ input_file="docker-compose.yml"
 
 # Perform the replacement on the first occurrence only
 if [ -f "$input_file" ]; then
-    sed "0,/$search_string/s//$replace_string/" "$input_file"
+    sed -i "0,/$search_string/s//$replace_string/" "$input_file"
     docker-compose up -d
 else
   echo "Input file '$input_file' not found."
