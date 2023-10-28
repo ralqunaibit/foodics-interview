@@ -13,13 +13,13 @@ I would like to highlight that I have designed this solution with a focus on sim
 ## Tree
 
 
-├── airports                Dockerfile and Jar to build the image.
-├── airports-1              The same but for the newer version.
-├── countries               The same but for countries Jar.
-├── docker-compose.yml      The compose for deploying the stack. 
-├── nginx.conf              The nginx configurations.
-├── terraform               The terraform main yaml.
-└── upgrade.sh              The script to upgrade the airports.
+├── airports                Dockerfile and Jar to build the image.\
+├── airports-1              The same but for the newer version.\
+├── countries               The same but for countries Jar.\
+├── docker-compose.yml      The compose for deploying the stack.\
+├── nginx.conf              The nginx configurations.\
+├── terraform               The terraform main yaml.\
+└── upgrade.sh              The script to upgrade the airports.\
 
 
 ## How to run
