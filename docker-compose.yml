@@ -1,0 +1,24 @@
+version: '3'
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - "8000:8080"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - airports
+      - countries
+
+  airports:
+    image: rawme/foodics-interview:airports
+    container_name: airports
+
+  airports1:
+    image: rawme/foodics-interview:airports
+    container_name: airports1
+
+  countries:
+    image: rawme/foodics-interview:countries
+    container_name: countries
